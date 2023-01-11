@@ -21,16 +21,20 @@ const initialFormErrors = {
   name: ''
 }
 
+const initialOrders = []
+
 const App = () => {
+  const [orders, setOrders] = useState(initialOrders);
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
 
   const postNewOrder = newOrder => {
     axios.post('https://reqres.in/api/orders', newOrder)
       .then(res => {
-        console.log(res)
+        setOrders([ res.data, ...orders ])
       })
       .catch(err => console.error(err))
+      .finally(() => setFormValues(initialFormValues))
   }
 
   const validate = (name, value) => {
@@ -51,6 +55,10 @@ const App = () => {
     const newOrder = {
       name: formValues.name.trim(),
       size: formValues.size.trim(),
+      topping1: formValues.topping1,
+      topping2: formValues.topping2,
+      topping3: formValues.topping3,
+      topping4: formValues.topping4,
       special: formValues.special.trim(),
     }
     postNewOrder(newOrder);

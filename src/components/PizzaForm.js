@@ -48,7 +48,9 @@ export default function PizzaForm(props) {
                             value={values.size}
                             name='size'
                         >
-                            <option value=''>- Select a Pizza Size -</option>
+                            <option value='personal'>Personal</option>
+                            <option value='medium'>Medium</option>
+                            <option value='large'>Large</option>
                         </select>
                     </label>
                 </div>
@@ -104,6 +106,7 @@ export default function PizzaForm(props) {
                         />
                     </label>
                 </div>
+                <button id='order-button'>submit</button>
             </form>
         </div>
     )
