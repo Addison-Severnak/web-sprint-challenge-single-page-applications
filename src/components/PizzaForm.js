@@ -21,12 +21,12 @@ export default function PizzaForm(props) {
 
     return (
         <div className='pizza-form-wrapper'>
-            <form id='pizza-form'>
+            <form id='pizza-form' onSubmit={onSubmit}>
                 <div className='form-submit'>
                     <h2>Build Your Own Pizza</h2>
 
                     <div className='errors'>
-                        <div></div>
+                        <div>{errors.name}</div>
                     </div>
                 </div>
 
