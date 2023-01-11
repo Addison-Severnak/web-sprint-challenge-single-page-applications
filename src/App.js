@@ -4,7 +4,19 @@ import { Route, Link } from 'react-router-dom';
 import Homepage from "./components/Homepage";
 import PizzaForm from "./components/PizzaForm";
 
+const initialFormValues = {
+  name: '',
+  size: '',
+  topping1: false,
+  topping2: false,
+  topping3: false,
+  topping4: false,
+  special: ''
+}
+
 const App = () => {
+  const [formValues, setFormValues] = useState(initialFormValues)
+
   return (
     <>
       <h1>The Pizza Pizza Shop</h1>
@@ -19,7 +31,9 @@ const App = () => {
         <Homepage />
       </Route>
       <Route path='/pizza'>
-        <PizzaForm />
+        <PizzaForm
+          values={formValues}   
+        />
       </Route>
     </>
   );
